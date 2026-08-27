@@ -1,0 +1,7 @@
+pwsid,inventory_system_name,system_name,source_water,source_detail,population_or_customers,source_page
+TX1010013,CITY OF HOUSTON,City of Houston Main System,Mixed: 90.3% surface and 9.7% groundwater,"San Jacinto River/Lakes Conroe and Houston; Trinity River/Lake Livingston; 104 Evangeline and Chicot wells",2.97 million customers,7
+TX1010348,CITY OF HOUSTON UD 5 - KINGWOOD,Kingwood,Groundwater,"16 Evangeline and Chicot wells deeper than 750 feet",80.3 thousand customers,10
+TX1011902,CITY OF HOUSTON WILLOW CHASE,Willow Chase,Groundwater,"5 Evangeline and Chicot wells deeper than 750 feet",15.2 thousand customers,12
+TX1011585,CITY OF HOUSTON DISTRICT 73,District 73,Groundwater,"2 Evangeline and Chicot wells deeper than 750 feet",6.9 thousand customers,14
+TX1011593,CITY OF HOUSTON DISTRICT 82,District 82,Groundwater,"2 Evangeline and Chicot wells deeper than 750 feet",951 customers,16
+TX1011594,CITY OF HOUSTON BELLEAU WOODS,Belleau Woods,Mixed surface and groundwater,Purchased from City of Humble,439 customers,18

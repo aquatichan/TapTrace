@@ -1,0 +1,49 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+work/backend/.env
+*.pem
+*.key
+
+# Local environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.pytest_cache/
+
+# Downloaded source data and generated artifacts
+work/data/raw/
+outputs/
+
+# Historical experiments and document-rendering workspace (not production backend)
+work/day2/
+work/day3/
+work/model/
+work/research/
+work/rendered/
+work/md_to_docx.py
+work/national_ccr/extracted/
+work/backend/model_policy.py
+work/backend/city_model_registry.json
+work/backend/validate_city_model_registry.py
+work/day1/audit_and_label.py
+work/day1/audit_and_label_dc.py
+work/day1/build_dc_training_table.py
+work/day1/download_dc_property_features.py
+
+# Runtime state and backups
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+backups/
+data/
+
+# Large model/data formats
+*.cbm
+*.gz
+*.zip
+*.xlsx
+*.pdf
+*.docx

@@ -1,0 +1,13 @@
+groups:
+  - name: taptrace
+    rules:
+      - alert: TapTraceApiDown
+        expr: up{job="taptrace-api"} == 0
+        for: 2m
+        labels: {severity: critical}
+        annotations: {summary: "TapTrace API is unavailable"}
+      - alert: TapTraceHighServerErrorRate
+        expr: sum(rate(taptrace_http_requests_total{status_class="5xx"}[5m])) / clamp_min(sum(rate(taptrace_http_requests_total[5m])), 0.001) > 0.05
+        for: 10m
+        labels: {severity: warning}
+        annotations: {summary: "TapTrace 5xx rate is above 5%"}

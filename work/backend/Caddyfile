@@ -1,0 +1,6 @@
+{$TAPTRACE_DOMAIN:localhost} {
+    encode zstd gzip
+    @private path /metrics
+    respond @private 404
+    reverse_proxy api:8080
+}

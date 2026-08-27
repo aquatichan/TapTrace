@@ -1,0 +1,93 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: work/backend/Dockerfile
+    restart: unless-stopped
+    env_file: work/backend/.env
+    environment:
+      TAPTRACE_REDIS_URL: redis://redis:6379/0
+      TAPTRACE_REQUIRE_REDIS: "true"
+      TAPTRACE_METRICS_TOKEN: internal-prometheus-only
+      TAPTRACE_STATE_DIR: /data
+      TAPTRACE_BACKUP_DIR: /backups
+      TAPTRACE_REQUIRE_RECENT_BACKUP: "true"
+    volumes:
+      - taptrace-state:/data
+      - taptrace-backups:/backups:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5m
+    networks: [edge, private]
+
+  redis:
+    image: redis:7.4-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks: [private]
+
+  proxy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    environment:
+      TAPTRACE_DOMAIN: ${TAPTRACE_DOMAIN:-localhost}
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./work/backend/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on: [api]
+    networks: [edge]
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    restart: unless-stopped
+    command: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.retention.time=30d"]
+    volumes:
+      - ./work/backend/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./work/backend/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus-data:/prometheus
+    depends_on: [api]
+    networks: [private]
+
+  backup:
+    build:
+      context: .
+      dockerfile: work/backend/Dockerfile
+    restart: unless-stopped
+    env_file: work/backend/.env
+    environment:
+      TAPTRACE_STATE_DIR: /data
+      TAPTRACE_BACKUP_DIR: /backups
+    command: ["sh", "-c", "while true; do if python work/backend/backup.py; then sleep $${TAPTRACE_BACKUP_INTERVAL_SECONDS:-86400}; else sleep 60; fi; done"]
+    volumes:
+      - taptrace-state:/data:ro
+      - taptrace-backups:/backups
+    depends_on: [api]
+    networks: [private, edge]
+
+volumes:
+  taptrace-state:
+  taptrace-backups:
+  redis-data:
+  caddy-data:
+  caddy-config:
+  prometheus-data:
+
+networks:
+  edge:
+  private:
+    internal: true

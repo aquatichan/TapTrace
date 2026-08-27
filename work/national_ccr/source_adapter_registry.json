@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "admission_policy": "Adapters create staged evidence only; registry validation remains mandatory.",
+  "adapters": [
+    {
+      "id": "official_pdf",
+      "scope": "national",
+      "input": "https_pdf_url",
+      "implementation": "automate_national_ccr_pipeline.py",
+      "status": "active"
+    },
+    {
+      "id": "official_html",
+      "scope": "national",
+      "input": "https_html_url",
+      "implementation": "automate_national_ccr_pipeline.py",
+      "status": "active"
+    },
+    {
+      "id": "state_tabular_bulk",
+      "scope": "state_or_primacy_agency",
+      "input": "csv_or_json_with_pwsid_and_source_provenance",
+      "implementation": "import_state_ccr_table.py",
+      "status": "active"
+    },
+    {
+      "id": "utility_structured_submission",
+      "scope": "single_pwsid",
+      "input": "api_submission",
+      "implementation": "work/backend/ccr_submissions.py",
+      "status": "active"
+    }
+  ]
+}

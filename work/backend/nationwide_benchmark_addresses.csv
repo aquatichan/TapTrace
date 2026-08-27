@@ -1,0 +1,52 @@
+case_id,state,address,case_type
+AL_CAPITOL,AL,"600 Dexter Ave, Montgomery, AL 36104",civic
+AK_CAPITOL,AK,"120 4th St, Juneau, AK 99801",civic
+AZ_CAPITOL,AZ,"1700 W Washington St, Phoenix, AZ 85007",civic
+AR_CAPITOL,AR,"500 Woodlane St, Little Rock, AR 72201",civic
+CA_CAPITOL,CA,"1315 10th St, Sacramento, CA 95814",civic
+CO_CAPITOL,CO,"200 E Colfax Ave, Denver, CO 80203",civic
+CT_CAPITOL,CT,"210 Capitol Ave, Hartford, CT 06106",civic
+DE_CAPITOL,DE,"411 Legislative Ave, Dover, DE 19901",civic
+FL_CAPITOL,FL,"400 S Monroe St, Tallahassee, FL 32399",civic
+GA_CAPITOL,GA,"206 Washington St SW, Atlanta, GA 30334",civic
+HI_CAPITOL,HI,"415 S Beretania St, Honolulu, HI 96813",civic
+ID_CAPITOL,ID,"700 W Jefferson St, Boise, ID 83702",civic
+IL_CAPITOL,IL,"401 S 2nd St, Springfield, IL 62701",civic
+IN_CAPITOL,IN,"200 W Washington St, Indianapolis, IN 46204",civic
+IA_CAPITOL,IA,"1007 E Grand Ave, Des Moines, IA 50319",civic
+KS_CAPITOL,KS,"300 SW 10th Ave, Topeka, KS 66612",civic
+KY_CAPITOL,KY,"700 Capital Ave, Frankfort, KY 40601",civic
+LA_CAPITOL,LA,"900 N 3rd St, Baton Rouge, LA 70802",civic
+ME_CAPITOL,ME,"210 State St, Augusta, ME 04330",civic
+MD_CAPITOL,MD,"100 State Cir, Annapolis, MD 21401",civic
+MA_CAPITOL,MA,"24 Beacon St, Boston, MA 02133",civic
+MI_CAPITOL,MI,"100 N Capitol Ave, Lansing, MI 48933",civic
+MN_CAPITOL,MN,"75 Rev Dr Martin Luther King Jr Blvd, Saint Paul, MN 55155",civic
+MS_CAPITOL,MS,"400 High St, Jackson, MS 39201",civic
+MO_CAPITOL,MO,"201 W Capitol Ave, Jefferson City, MO 65101",civic
+MT_CAPITOL,MT,"1301 E 6th Ave, Helena, MT 59601",civic
+NE_CAPITOL,NE,"1445 K St, Lincoln, NE 68508",civic
+NV_CAPITOL,NV,"101 N Carson St, Carson City, NV 89701",civic
+NH_CAPITOL,NH,"107 N Main St, Concord, NH 03301",civic
+NJ_CAPITOL,NJ,"125 W State St, Trenton, NJ 08608",civic
+NM_CAPITOL,NM,"490 Old Santa Fe Trl, Santa Fe, NM 87501",civic
+NY_CAPITOL,NY,"State St and Washington Ave, Albany, NY 12224",civic
+NC_CAPITOL,NC,"1 E Edenton St, Raleigh, NC 27601",civic
+ND_CAPITOL,ND,"600 E Boulevard Ave, Bismarck, ND 58505",civic
+OH_CAPITOL,OH,"1 Capitol Sq, Columbus, OH 43215",civic
+OK_CAPITOL,OK,"2300 N Lincoln Blvd, Oklahoma City, OK 73105",civic
+OR_CAPITOL,OR,"900 Court St NE, Salem, OR 97301",civic
+PA_CAPITOL,PA,"501 N 3rd St, Harrisburg, PA 17120",civic
+RI_CAPITOL,RI,"82 Smith St, Providence, RI 02903",civic
+SC_CAPITOL,SC,"1100 Gervais St, Columbia, SC 29208",civic
+SD_CAPITOL,SD,"500 E Capitol Ave, Pierre, SD 57501",civic
+TN_CAPITOL,TN,"600 Dr M L K Jr Blvd, Nashville, TN 37243",civic
+TX_CAPITOL,TX,"1100 Congress Ave, Austin, TX 78701",civic
+UT_CAPITOL,UT,"350 N State St, Salt Lake City, UT 84103",civic
+VT_CAPITOL,VT,"115 State St, Montpelier, VT 05633",civic
+VA_CAPITOL,VA,"1000 Bank St, Richmond, VA 23219",civic
+WA_CAPITOL,WA,"416 Sid Snyder Ave SW, Olympia, WA 98504",civic
+WV_CAPITOL,WV,"1900 Kanawha Blvd E, Charleston, WV 25305",civic
+WI_CAPITOL,WI,"2 E Main St, Madison, WI 53703",civic
+WY_CAPITOL,WY,"200 W 24th St, Cheyenne, WY 82001",civic
+DC_CITY_HALL,DC,"1350 Pennsylvania Ave NW, Washington, DC 20004",civic

@@ -1,0 +1,179 @@
+pwsid,report_year,data_year,contaminant,unit,sample_scope,statistic_type,result_text,minimum,average,maximum,percentile_90,comparison_value,benchmark_type,benchmark_value,violation,source_page,notes
+TX1010013,2025,2025,Arsenic,ppb,water plants,range,ND to 6.7,0,1.7,6.7,,6.7,MCL,10,no,7,
+TX1010013,2025,2025,Nitrate,ppm,distribution system,range,ND to 1.40,0,0.35,1.4,,1.4,MCL,10,no,8,
+TX1010013,2025,2025,Haloacetic Acids,ppb,distribution system,highest LRAA,Highest LRAA 40.8; samples ND to 55.9,0,,55.9,,40.8,MCL,60,no,8,
+TX1010013,2025,2025,Total Trihalomethanes,ppb,distribution system,highest LRAA,Highest LRAA 43.6; samples ND to 47.7,0,,47.7,,43.6,MCL,80,no,8,
+TX1010013,2025,2025,Lead,ppb,customer taps,90th percentile,90% below 5.1; no samples above 15,,,,5.1,5.1,Action Level,15,no,8,
+TX1010013,2025,2025,Copper,ppm,customer taps,90th percentile,90% below 0.22; no samples above 1.3,,,,0.22,0.22,Action Level,1.3,no,8,
+TX1010013,2025,2025,Total Hardness as CaCO3,ppm,water system,range,43.5 to 229,43.5,135.5,229,,,,,not_applicable,9,
+TX1010013,2025,2024,Lithium,ppb,water system,range,13.7 to 33.9,13.7,23.8,33.9,,,,,not_applicable,9,
+CA1910067,2025,2024,Arsenic,ppb,treated source waters,highest average across sources,"Highest reported source average 3.5; source ranges <2 to 8.4",0,3.5,8.4,,3.5,MCL,10,no,18,"Values differ by LADWP and imported-water sources; comparison uses the highest reported average, not the sample maximum."
+CA1910067,2025,2024,Fluoride,ppm,treated source waters,range,"Source averages 0.7 to 0.8; overall observed range 0.3 to 0.9",0.3,,0.9,,0.8,MCL,2,no,18,
+CA1910067,2025,2024,Nitrate as nitrogen,ppm,treated source waters,highest average across sources,"Highest reported source average 0.5; observed maximum 2.4",0,0.5,2.4,,0.5,MCL,10,no,18,"Less-than reporting limits are represented as zero only for the numeric minimum; original qualifiers remain in result_text."
+CA1910067,2025,2024,Chlorine Residual Total,ppm,distribution system,highest running annual average,"HRAA 1.9; range 1.7 to 2.0",1.7,,2,,1.9,MRDL,4,no,19,
+CA1910067,2025,2023,Lead,ppb,customer taps,90th percentile,"90th percentile <5; 3 of 105 samples exceeded action level",,,,5,5,Action Level,15,no,19,"Most recent monitoring was 2023; numeric comparison conservatively stores the reported upper bound of <5 as 5."
+CA1910067,2025,2023,Copper,ppb,customer taps,90th percentile,"90th percentile 529; 0 of 105 samples exceeded action level",,,,529,529,Action Level,1300,no,19,"Most recent monitoring was 2023."
+CA1910067,2025,2024,Haloacetic Acids,ppb,distribution system,highest LRAA,"Highest LRAA 14.9; range 3.6 to 16.3",3.6,,16.3,,14.9,MCL,60,no,19,
+CA1910067,2025,2024,Total Trihalomethanes,ppb,distribution system,highest LRAA,"Highest LRAA 34.4; range 13.9 to 35.8",13.9,,35.8,,34.4,MCL,80,no,19,
+AZ0407025,2025,2025,Chlorine,ppm,distribution system,running annual average,"Running annual average 0.84; samples <0.24 to 1.9",0.24,0.84,1.9,,0.84,MRDL,4,no,3,"Minimum is the reported upper bound for <0.24."
+AZ0407025,2025,2025,Haloacetic Acids,ppb,distribution system,highest LRAA,"Highest LRAA 17; samples 0.6 to 26",0.6,,26,,17,MCL,60,no,3,
+AZ0407025,2025,2025,Total Trihalomethanes,ppb,distribution system,highest LRAA,"Highest LRAA 49; samples 4 to 68",4,,68,,49,MCL,80,no,3,
+AZ0407025,2025,2024,Lead,ppb,customer taps,90th percentile,"90th percentile 3; 2 of 56 sites above action level",0,,41.8,3,3,Action Level,15,no,5,"No lead/copper monitoring was required in 2025; ND is represented as zero only in numeric minimum."
+AZ0407025,2025,2024,Copper,ppm,customer taps,90th percentile,"90th percentile 0.3; 0 of 56 sites above action level",0.04,,0.5,0.3,0.3,Action Level,1.3,no,5,"No lead/copper monitoring was required in 2025."
+AZ0407025,2025,2025,Total Dissolved Solids,ppm,distribution system,range,464 to 716,464,,716,,,Secondary Guideline,500,not_applicable,4,"Aesthetic secondary guideline; not a health-based MCL and no compliance comparison is assigned."
+AZ0407025,2025,2025,Total Hardness,ppm,distribution system,range,"172 to 302 ppm; 10 to 17.6 grains/gallon",172,,302,,,,,not_applicable,4,
+AZ0407025,2025,2025,Total Coliform E. coli and Chlorine Monitoring,not_applicable,distribution system,monitoring completeness,"359 of 360 required routine samples collected in May 2025; no E. coli found and chlorine within EPA limits",359,,360,,,,,yes,1,"Monitoring violation: six repeat verification samples were mistakenly counted; report states the incident posed no health risk."
+PA1510001,2024,2022,Lead,ppb,customer taps,90th percentile,"90th percentile 2.0; 3 of 104 homes elevated; range 0 to 102",0,,102,2,2,Action Level,15,no,19,"Most recent required tap sampling was 2022; this is not a result for an individual address."
+PA1510001,2024,2022,Copper,ppm,customer taps,90th percentile,"90th percentile 0.219; 0 of 104 homes elevated; range 0.006 to 0.399",0.006,,0.399,0.219,0.219,Action Level,1.3,no,19,"Most recent required tap sampling was 2022."
+PA1510001,2024,2024,Fluoride,ppm,water system,highest result,"Highest result 0.624; range 0.619 to 0.624",0.619,,0.624,,0.624,MCL,2,no,19,"Pennsylvania's 2 ppm MCL shown in report takes precedence over federal 4 ppm MCL."
+PA1510001,2024,2024,Nitrate,ppm,water system,highest result,"Highest result 4.52; range 0.92 to 4.52",0.92,,4.52,,4.52,MCL,10,no,19,
+PA1510001,2024,2024,Total Chlorine Residual,ppm,distribution system,highest monthly average,"Highest monthly average 2.33; monthly averages 1.73 to 2.33",1.73,,2.33,,2.33,MRDL,4,no,20,
+PA1510001,2024,2024,Total Trihalomethanes,ppb,distribution system,highest LRAA,"Highest LRAA 51; samples 14 to 76",14,,76,,51,MCL,80,no,21,"Report also discloses late reporting in March 2024; all results were within regulatory limits."
+PA1510001,2024,2024,Haloacetic Acids,ppb,distribution system,highest LRAA,"Highest LRAA 43; samples 16 to 52",16,,52,,43,MCL,60,no,21,"One Northwest Philadelphia location had a Q2 TCAA average of 25.2 ppb above the 20 ppb lifetime health advisory; customers were notified."
+PA1510001,2024,2024,PFOA,ppt,water system,highest result,"Highest result 7.3; range 2.5 to 7.3",2.5,,7.3,,7.3,PA DEP MCL,14,no,22,"2024 compliance was evaluated against Pennsylvania's then-applicable 14 ppt MCL; federal 4 ppt compliance begins later per report."
+PA1510001,2024,2024,PFOS,ppt,water system,highest result,"Highest result 5.5; range 0 to 5.5",0,,5.5,,5.5,PA DEP MCL,18,no,22,"2024 compliance was evaluated against Pennsylvania's then-applicable 18 ppt MCL; federal 4 ppt compliance begins later per report."
+FL4130871,2025,2025,Total Trihalomethanes,ppb,main distribution system,highest LRAA,"Highest LRAA 50; samples 9 to 59",9,,59,,50,MCL,80,no,8,
+FL4130871,2025,2025,Haloacetic Acids,ppb,main distribution system,highest LRAA,"Highest LRAA 34; samples 10 to 43",10,,43,,34,MCL,60,no,8,
+FL4130871,2025,2025,Chloramines,ppm,main distribution system,running annual average,"Annual average 2.5; samples ND to 4.0",0,2.5,4,,2.5,MRDL,4,no,8,
+FL4130871,2025,2025,Arsenic,ppb,main system,highest result,"Highest result 1; range 0.6 to 1",0.6,,1,,1,MCL,10,no,8,
+FL4130871,2025,2025,Copper,ppm,main-system customer taps,90th percentile,"90th percentile 0.07; 0 of 102 homes exceeded action level",,,,0.07,0.07,Action Level,1.3,no,8,
+FL4130871,2025,2025,Lead,ppb,main-system customer taps,90th percentile,"90th percentile 3.2; 1 of 102 homes exceeded action level",,,,3.2,3.2,Action Level,15,no,8,
+FL4130871,2025,2025,Fluoride,ppm,main system,highest result,"Highest result 1; range 0.1 to 1",0.1,,1,,1,MCL,4,no,8,"Main-system fluoridation stopped June 6 2025; subsequent naturally occurring concentrations were 0.1 to 0.3 ppm."
+FL4130871,2025,2025,Nitrate as nitrogen,ppm,main system,highest result,"Highest result 0.3; range 0.01 to 0.3",0.01,,0.3,,0.3,MCL,10,no,8,
+TX0150018,2025,2024,Lead,ppb,customer taps,90th percentile,"90th percentile 1.6; 0 sites over action level",,,,1.6,1.6,Action Level,15,no,3,
+TX0150018,2025,2024,Copper,ppm,customer taps,90th percentile,"90th percentile 0.187; 0 sites over action level",,,,0.187,0.187,Action Level,1.3,no,3,
+TX0150018,2025,2024,Nitrate as nitrogen,ppm,SAWS main system,highest result,"Highest reported level 2; samples 0 to 2.51",0,,2.51,,2,MCL,10,no,3,"The report's displayed highest-level and range maximum differ; comparison preserves its highest-level field."
+TX0150018,2025,2024,Haloacetic Acids,ppb,SAWS main distribution system,highest LRAA,"Highest LRAA 8; samples 0 to 12.7",0,,12.7,,8,MCL,60,no,3,
+TX0150018,2025,2024,Total Trihalomethanes,ppb,SAWS main distribution system,highest LRAA,"Highest LRAA 33; samples 0 to 52.9",0,,52.9,,33,MCL,80,no,3,
+TX0150018,2025,2024,Uranium,ppb,water plants,highest result,"Highest result 1.7; samples 0 to 1.7",0,,1.7,,1.7,MCL,30,no,3,
+MD0300002,2025,2024,Lead,ppb,customer taps,90th percentile,"90th percentile 2.74; 0 samples above action level; range <2 to 7.09",2,,7.09,2.74,2.74,Action Level,15,no,24,"Minimum is the reported upper bound for <2."
+MD0300002,2025,2024,Copper,ppb,customer taps,90th percentile,"90th percentile 112; 0 samples above action level; range 14.4 to 402",14.4,,402,112,112,Action Level,1300,no,24,
+MD0300002,2025,2024,Fluoride,ppm,treatment plants,highest result,"Highest across treatment plants 1.09; ranges 0.07 to 1.09",0.07,,1.09,,1.09,MCL,4,no,24,
+MD0300002,2025,2024,Nitrate,ppm,treatment plants,highest result,"Highest across treatment plants 5.81; ranges 0.41 to 5.81",0.41,,5.81,,5.81,MCL,10,no,24,
+MD0300002,2025,2024,PFOA,ppt,treatment plants,highest result,"Highest detected 2.9 at Ashburton; 1.9 at Montebello",1.9,,2.9,,2.9,Future Federal MCL,4,no,24,"Report states listed PFAS MCLs take effect April 26 2029."
+MD0300002,2025,2024,PFOS,ppt,treatment plants,highest result,"Highest detected 3.3 at Ashburton; 1.7 at Montebello",1.7,,3.3,,3.3,Future Federal MCL,4,no,24,"Report states listed PFAS MCLs take effect April 26 2029."
+NV0000090,2025,2024,Arsenic,ppb,entry points,range,"Entry-point results 0.77 to 4.0",0.77,,4,,4,MCL,10,no,3,
+NV0000090,2025,2024,Copper,ppm,customer taps,90th percentile,"90th percentile 0.85; samples ND to 2.3",0,,2.3,0.85,0.85,Action Level,1.3,no,3,
+NV0000090,2025,2024,Lead,ppb,customer taps,90th percentile,"90th percentile 2.6; samples ND to 16",0,,16,2.6,2.6,Action Level,15,no,3,
+NV0000090,2025,2024,Nitrate as nitrogen,ppm,entry points,highest result,"Highest entry-point result 6.3",0.45,,6.3,,6.3,MCL,10,no,3,
+NV0000090,2025,2024,Haloacetic Acids,ppb,distribution system,highest LRAA,"Highest LRAA 42; samples ND to 49",0,,49,,42,MCL,60,no,3,
+NV0000090,2025,2024,Total Trihalomethanes,ppb,distribution system,highest LRAA,"Highest LRAA 77; samples 1 to 90",1,,90,,77,MCL,80,no,3,"Individual samples reached 90; compliance is based on the LRAA."
+CA3710020,2025,2025,Fluoride,ppm,treated water,range,"Average 0.7; range 0.2 to 0.9",0.2,0.7,0.9,,0.7,MCL,2,no,8,
+CA3710020,2025,2025,Nitrate as nitrogen,ppm,treated water,highest result,"Highest reported treated/purchased-water result 0.5",0,,0.5,,0.5,MCL,10,no,8,
+CA3710020,2025,2023,Copper,ppm,customer taps,90th percentile,"90th percentile 0.6; 1 of 56 sites exceeded action level",0,,0.6,0.6,0.6,Action Level,1.3,no,9,"Most recent system-wide study was conducted in 2023."
+CA3710020,2025,2023,Lead,ppb,customer taps,90th percentile,"90th percentile non-detect; range ND to 1.4; 0 of 56 exceeded action level",0,,1.4,0,0,Action Level,15,no,9,"Most recent system-wide study was conducted in 2023."
+CA3710020,2025,2025,Haloacetic Acids,ppb,distribution system,highest LRAA,"Highest LRAA 15; samples 1.3 to 21.2",1.3,,21.2,,15,MCL,60,no,9,
+CA3710020,2025,2025,Total Trihalomethanes,ppb,distribution system,highest LRAA,"Highest LRAA 55; samples 8.6 to 87.0",8.6,,87,,55,MCL,80,no,9,"Individual samples reached 87; compliance is based on the LRAA."
+CO0116001,2025,2024,Lead,ppb,customer taps,90th percentile,"Second-half 90th percentile 3.6; 3 of 478 sites above action level; range BRL to 35.9",0,,35.9,3.6,3.6,Action Level,15,no,13,"First-half 90th percentile was 4 with 7 of 457 sites above action level."
+CO0116001,2025,2024,Copper,ppb,customer taps,90th percentile,"Second-half 90th percentile 60; 0 sites above action level; range BRL to 261",0,,261,60,60,Action Level,1300,no,13,"Second-half sample size was 478; first-half 90th percentile was 60 with 0 of 402 sites above action level."
+CO0116001,2025,2024,Total Trihalomethanes,ppb,distribution system,highest LRAA,"Highest LRAA 37.9; samples 16.4 to 64.7",16.4,,64.7,,37.9,MCL,80,no,14,
+CO0116001,2025,2024,Haloacetic Acids,ppb,distribution system,highest LRAA,"Highest LRAA 22.9; samples 7.7 to 37.2",7.7,,37.2,,22.9,MCL,60,no,14,
+CO0116001,2025,2024,Total Hardness,ppb,distribution system,range,"Average 89000; range 48000 to 116000",48000,89000,116000,,,,,not_applicable,14,
+DC0000002,2025,2024,Arsenic,ppb,water entering distribution,range,0.4 to 0.4,0.4,,0.4,,0.4,MCL,10,no,19,
+DC0000002,2025,2024,Barium,ppm,water entering distribution,range,0.04 to 0.04,0.04,,0.04,,0.04,MCL,2,no,19,
+DC0000002,2025,2024,Cyanide,ppm,water entering distribution,range,0.008 to 0.008,0.008,,0.008,,0.008,MCL,0.2,no,19,
+DC0000002,2025,2024,Fluoride,ppm,water entering distribution,range,0.7 to 0.8,0.7,,0.8,,0.8,MCL,4,no,19,
+DC0000002,2025,2024,Nitrate as Nitrogen,ppm,water entering distribution,range,0.3 to 2,0.3,,2,,2,MCL,10,no,19,
+DC0000002,2025,2024,Atrazine,ppb,water entering distribution,range,ND to 0.2,0,,0.2,,0.2,MCL,3,no,20,
+DC0000002,2025,2024,Dalapon,ppb,water entering distribution,range,ND to 1,0,,1,,1,MCL,200,no,20,
+DC0000002,2025,2024,Chlorine,ppm,distribution system,highest running annual average,Highest RAA 3.2; samples 0.1 to 4.2,0.1,,4.2,,3.2,MRDL,4,no,20,
+DC0000002,2025,2024,Total Trihalomethanes,ppb,distribution system,highest LRAA,Highest LRAA 55; samples 22 to 68,22,,68,,55,MCL,80,no,20,
+DC0000002,2025,2024,Haloacetic Acids,ppb,distribution system,highest LRAA,Highest LRAA 35; samples 13 to 55,13,,55,,35,MCL,60,no,20,
+DC0000002,2025,2024,Lead,ppb,customer taps Jan-Jun,90th percentile,2; range ND to 12.7; 0 of 105 above AL,0,,12.7,2,2,Action Level,15,no,21,
+DC0000002,2025,2024,Lead,ppb,customer taps Jul-Dec,90th percentile,2; range ND to 35.9; 1 of 105 above AL,0,,35.9,2,2,Action Level,15,no,21,
+DC0000002,2025,2024,Copper,ppm,customer taps Jan-Jun,90th percentile,0.101; report range displayed as 1.2 to 364,1.2,,364,0.101,0.101,Action Level,1.3,no,21,"Range unit rendering in source PDF appears inconsistent with table unit; preserve source text and do not use range for comparison."
+DC0000002,2025,2024,Copper,ppm,customer taps Jul-Dec,90th percentile,0.095; report range displayed as 3.5 to 951,3.5,,951,0.095,0.095,Action Level,1.3,no,21,"Range unit rendering in source PDF appears inconsistent with table unit; preserve source text and do not use range for comparison."
+DC0000002,2025,2024,Nickel,ppb,water entering distribution,range,0.7 to 1.0,0.7,0.8,1.0,,,,,not_applicable,21,
+DC0000002,2025,2024,Sodium,ppm,water entering distribution,range,16 to 25,16,19,25,,,,,not_applicable,21,
+DC0000002,2025,2024,Total Hardness,ppm,water entering distribution,range,78 to 175,78,126,175,,,,,not_applicable,21,
+NY7003493,2025,2025,Alkalinity as CaCO3,mg/L,water system,range,16 to 72,16,25,72,,,,,not_applicable,11,
+NY7003493,2025,2025,Aluminum,µg/L,water system,range,5 to 62,5,16,62,,62,MCL range upper,200,no,11,"NYSDOH MCL displayed as 50-200 depending on conditions; upper value stored for simple comparison."
+NY7003493,2025,2025,Barium,mg/L,water system,range,0.01 to 0.03,0.01,0.02,0.03,,0.03,MCL,2,no,11,
+NY7003493,2025,2025,Chloride,mg/L,water system,range,12 to 72,12,19,72,,72,MCL,250,no,11,
+NY7003493,2025,2025,Chlorine Residual Free,mg/L,distribution system,range,ND to 1.4,0,0.6,1.4,,1.4,MRDL,4,no,11,
+NY7003493,2025,2025,Copper,mg/L,water system,range,ND to 0.048,0,0.007,0.048,,0.048,Action Level,1.3,no,11,"This conventional table row is separate from residential Lead and Copper Rule tap sampling."
+NY7003493,2025,2025,Fluoride,mg/L,water system,range,ND to 0.8,0,0.7,0.8,,0.8,MCL,2.2,no,11,
+NY7003493,2025,2025,Hardness as CaCO3,mg/L,water system,range,18 to 100,18,32,100,,,,,not_applicable,11,
+NY7003493,2025,2025,Iron,µg/L,water system,range,ND to 95,0,27,95,,95,MCL,300,no,11,
+NY7003493,2025,2025,Lead,µg/L,water system,range,ND to 2.5,0,,2.5,,2.5,MCL,15,no,11,"This conventional table row is separate from residential Lead and Copper Rule tap sampling."
+NY7003493,2025,2025,Manganese,µg/L,water system,range,ND to 140,0,21,140,,140,MCL,300,no,12,
+NY7003493,2025,2025,Nitrate as Nitrogen,mg/L,water system,range,0.07 to 0.37,0.07,0.14,0.37,,0.37,MCL,10,no,12,
+NY7003493,2025,2025,pH,pH units,distribution system,range,6.9 to 8.1,6.9,7.3,8.1,,,,,not_applicable,12,
+NY7003493,2025,2025,Sodium,mg/L,water system,range,9 to 49,9,16,49,,,,,not_applicable,12,
+NY7003493,2025,2025,Sulfate,mg/L,water system,range,3 to 33,3,6,33,,33,MCL,250,no,12,
+NY7003493,2025,2025,Total Dissolved Solids,mg/L,water system,range,45 to 240,45,73,240,,240,MCL,500,no,12,
+NY7003493,2025,2025,Haloacetic Acid 5,µg/L,distribution system,highest LRAA,Range 7 to 64; highest LRAA 47,7,,64,,47,MCL,60,no,13,
+NY7003493,2025,2025,Total Trihalomethanes,µg/L,distribution system,highest LRAA,Range 4 to 81; highest LRAA 52,4,,81,,52,MCL,80,no,13,
+NY7003493,2025,2025,Copper,mg/L,residential customer taps,90th percentile,0.194; range 0.007 to 1.350; 1 of 326 exceeding AL,0.007,,1.35,0.194,0.194,Action Level,1.3,no,13,
+NY7003493,2025,2025,Lead,µg/L,residential customer taps,90th percentile,10; range ND to 155; 16 of 326 exceeding AL,0,,155,10,10,Action Level,15,no,13,
+CA3810011,2025,2025,Total Trihalomethanes,ppb,distribution system,highest LRAA,Range 12 to 65; highest LRAA 47,12,,65,,47,MCL,80,no,9,
+CA3810011,2025,2025,Five Haloacetic Acids,ppb,distribution system,highest LRAA,Range 6 to 50; highest LRAA 37,6,,50,,37,MCL,60,no,9,
+CA3810011,2025,2025,Bromate,ppb,water system,highest running annual average,Range 1.9 to 4.1; highest RAA 3.5,1.9,,4.1,,3.5,MCL,10,no,9,
+CA3810011,2025,2025,Chromium VI,ppb,water system,range,ND to 0.1,0,0.1,0.1,,0.1,MCL,10,no,9,
+CA3810011,2025,2025,Fluoride source water,ppm,source water,range,ND to 0.9,0,0.3,0.9,,0.9,MCL,2,no,9,
+CA3810011,2025,2025,Nitrate as N,ppm,water system,range,ND to 0.4,0,,0.4,,0.4,MCL,10,no,9,
+CA3810011,2025,2025,Chloramine as chlorine,ppm,distribution system,highest running annual average,Range below 0.1 to 3.6; highest RAA 2.6,0.1,,3.6,,2.6,MRDL,4,no,9,
+CA3810011,2025,2025,Chloride,ppm,water system,range,below 3 to 19,3,10,19,,19,SMCL,500,no,9,
+CA3810011,2025,2025,Iron,ppb,water system,range,below 6 to 36,6,17,36,,36,SMCL,300,no,9,
+CA3810011,2025,2025,Manganese,ppb,water system,range,below 2 to 2.7,2,2,2.7,,2.7,SMCL,50,no,9,
+CA3810011,2025,2025,Sulfate,ppm,water system,range,1 to 45,1,16,45,,45,SMCL,500,no,9,
+CA3810011,2025,2025,Total Dissolved Solids,ppm,water system,range,24 to 197,24,95,197,,197,SMCL,1000,no,9,
+CA3810011,2025,2024,Copper,ppb,customer taps,90th percentile,Range ND to 152; 90th percentile 72,0,,152,72,72,Action Level,1300,no,9,"Lead and Copper Rule monitoring occurred in August 2024."
+CA3810011,2025,2024,Lead,ppb,customer taps,90th percentile,Range below 1 to 8.8; 90th percentile 4.9,1,,8.8,4.9,4.9,Action Level,15,no,9,"Lead and Copper Rule monitoring occurred in August 2024; none of 50 samples exceeded the action level."
+CA3810011,2025,2025,Alkalinity as CaCO3,ppm,water system,range,8 to 131,8,64,131,,,,,not_applicable,9,
+CA3810011,2025,2025,Hardness as CaCO3,ppm,water system,range,8.1 to 112,8.1,62,112,,,,,not_applicable,9,
+CA3810011,2025,2025,pH,pH units,water system,range,9 to 9.7,9,9.3,9.7,,,,,not_applicable,9,
+CA3810011,2025,2025,Sodium,ppm,water system,range,3.1 to 29,3.1,18,29,,,,,not_applicable,9,
+TX2270001,2025,2025,Barium,ppm,treatment plants,range,0.009 to 0.015,0.009,0.012,0.015,,0.015,MCL,2,no,1,Official web table.
+TX2270001,2025,2025,Cyanide,ppb,treatment plants,range,10 to 80,10,50,80,,80,MCL,200,no,1,Official web table.
+TX2270001,2025,2025,Fluoride,ppm,treatment plants,range,0.59 to 0.71,0.59,0.66,0.71,,0.71,MCL,4,no,1,Official web table.
+TX2270001,2025,2025,Nitrate as Nitrogen,ppm,treatment plants,range,0 to 0.11,0,0.05,0.11,,0.11,MCL,10,no,1,Official web table.
+TX2270001,2025,2025,Chloramines,ppm,distribution system,range,0.06 to 3.1,0.06,2.3,3.1,,2.3,MRDL,4,no,1,Compliance statistic represented by reported average.
+TX2270001,2025,2025,Haloacetic Acids HAA5,ppb,distribution system,LRAA,Highest LRAA 15.6,8.4,13.1,21.1,,15.6,MCL,60,no,1,Comparison uses highest LRAA rather than maximum individual result.
+TX2270001,2025,2025,Total Trihalomethanes TTHM,ppb,distribution system,LRAA,Highest LRAA 45.5,31.4,40.5,53.9,,45.5,MCL,80,no,1,Comparison uses highest LRAA rather than maximum individual result.
+TX2270001,2025,2024,Copper,ppm,customer taps,90th_percentile,90% of samples below 0.008,0,0.003,0.01,0.008,0.008,AL,1.3,no,1,No sample exceeded 1.3 ppm.
+TX2270001,2025,2024,Lead,ppb,customer taps,90th_percentile,90% of samples below 1.0,0,0.2,5.1,1.0,1.0,AL,15,no,1,No sample exceeded 15 ppb.
+TX2270001,2025,2025,Total Hardness as CaCO3,ppm,system water,range,70 to 126,70,93,126,,,,,not_applicable,1,No health benchmark reported.
+WA5377050,2025,2025,Arsenic,ppb,Cedar finished water,range,0.3 to 0.6,0.3,0.54,0.6,,0.6,MCL,10,no,1,Official 2025 web table.
+WA5377050,2025,2025,Barium,ppb,Cedar finished water,range,1.3 to 2.2,1.3,1.7,2.2,,2.2,MCL,2000,no,1,Official 2025 web table.
+WA5377050,2025,2025,Fluoride,ppm,Cedar finished water,range,0.5 to 0.75,0.5,0.7,0.75,,0.75,MCL,4,no,1,Official 2025 web table.
+WA5377050,2025,2025,Total Coliform,%,Cedar finished water,highest_month,Highest month 0.6%; annual average 0.05%,,,0.6,,0.6,MCL,5,no,1,Comparison uses highest monthly percentage.
+WA5377050,2025,2025,Total Trihalomethanes,ppb,Cedar distribution area,range,19 to 41,19,34,41,,34,LRAA_MCL,80,no,1,Reported average used for compliance comparison; range retained.
+WA5377050,2025,2025,Haloacetic Acids HAA5,ppb,Cedar distribution area,range,13 to 36,13,28,36,,28,LRAA_MCL,60,no,1,Reported average used for compliance comparison; range retained.
+WA5377050,2025,2025,Arsenic,ppb,Tolt finished water,range,0.2 to 0.4,0.2,0.3,0.4,,0.4,MCL,10,no,1,Official 2025 web table.
+WA5377050,2025,2025,Barium,ppb,Tolt finished water,range,1.1 to 1.54,1.1,1.3,1.54,,1.54,MCL,2000,no,1,Official 2025 web table.
+WA5377050,2025,2025,Fluoride,ppm,Tolt finished water,range,0.6 to 0.75,0.6,0.7,0.75,,0.75,MCL,4,no,1,Official 2025 web table.
+WA5377050,2025,2025,Total Coliform,%,Tolt finished water,highest_month,Highest month 0.6%; annual average 0.05%,,,0.6,,0.6,MCL,5,no,1,Comparison uses highest monthly percentage.
+WA5377050,2025,2025,Total Trihalomethanes,ppb,Tolt distribution area,range,16 to 43,16,34,43,,34,LRAA_MCL,80,no,1,Reported average used for compliance comparison; range retained.
+WA5377050,2025,2025,Haloacetic Acids HAA5,ppb,Tolt distribution area,range,15 to 41,15,28,41,,28,LRAA_MCL,60,no,1,Reported average used for compliance comparison; range retained.
+WA5377050,2025,2025,Lead,ppb,customer taps,90th_percentile,90th percentile 1.6; 0 of 52 homes exceeded action level,,,,1.6,1.6,AL,15,no,1,Official 2025 lead and copper table.
+WA5377050,2025,2025,Copper,ppm,customer taps,90th_percentile,90th percentile 0.12; 0 of 52 homes exceeded action level,,,,0.12,0.12,AL,1.3,no,1,Official 2025 lead and copper table.
+CA0110005,2025,2025,Total Coliform,%,distribution system,highest_month,Highest month 0.3%,0,,0.3,,0.3,TT,5,no,4,Follow-up treatment-technique trigger is more than 5% positive in a month.
+CA0110005,2025,2025,Turbidity,NTU,treatment plants,maximum,Highest individual result 6.80; individual-filter effluents remained below 0.3 NTU,0.02,,6.8,,,TT,1,no,4,The reported 6.80 occurred in a pipeline after filtration and is not compared with the filter-effluent treatment-technique limit; the report states no filter-performance violation.
+CA0110005,2025,2025,Fluoride,ppm,treatment plants,range,0.6 to 0.8,0.6,,0.8,,0.8,MCL,2,no,4,
+CA0110005,2025,2024,Lead,ppb,customer taps,90th_percentile,90th percentile ND; 0 of 53 sites above AL; individual range ND to 13.3,0,,13.3,0,0,AL,15,no,4,Reduced monitoring last completed in 2024; ND is retained as zero only for the percentile comparison.
+CA0110005,2025,2024,Copper,ppm,customer taps,90th_percentile,90th percentile ND; 0 of 53 sites above AL; individual range ND to 0.2,0,,0.2,0,0,AL,1.3,no,4,Reduced monitoring last completed in 2024; ND is retained as zero only for the percentile comparison.
+CA0110005,2025,2025,Haloacetic Acids HAA5,ppb,distribution system,highest_LRAA,Highest LRAA 50; individual ranges by treatment area 20 to 76,20,,76,,50,LRAA_MCL,60,no,4,Compliance uses highest LRAA rather than the individual maximum.
+CA0110005,2025,2025,Total Trihalomethanes,ppb,distribution system,highest_LRAA,Highest LRAA 57; individual ranges by treatment area 25 to 110,25,,110,,57,LRAA_MCL,80,no,4,Compliance uses highest LRAA rather than the individual maximum.
+CA0110005,2025,2025,Chloramine as Chlorine,ppm,distribution system,highest_running_annual_average,Highest running annual average 2.4; individual range 0.07 to 3.71,0.07,,3.71,,2.4,MRDL,4,no,4,
+CA0110005,2025,2025,PFHxA,ppt,treatment plants,range,ND to 3.4,0,,3.4,,3.4,unregulated,,no,5,UCMR5 detection; no established MCL shown in the report.
+CA0110005,2025,2025,PFBA,ppt,treatment plants,range,ND to 5.2,0,,5.2,,5.2,unregulated,,no,5,PFBA is not one of the six newly regulated PFAS compounds and has no MCL in the report.
+OH1801212,2025,2025,Fluoride,ppm,four treatment plants,range,0.76 to 1.26,0.76,,1.26,,1.26,MCL,4,no,12,Plant-specific level-found values are retained in the source report.
+OH1801212,2025,2025,Nitrate as Nitrogen,ppm,four treatment plants,range,ND to 0.48,0,,0.48,,0.48,MCL,10,no,12,
+OH1801212,2025,2025,Total Trihalomethanes,ppb,combined distribution system,highest_LRAA,Highest LRAA 39.4; individual range 9.8 to 65.4,9.8,,65.4,,39.4,LRAA_MCL,80,no,12,Combined-distribution value applies to all four treatment plants.
+OH1801212,2025,2025,Haloacetic Acids HAA5,ppb,combined distribution system,highest_LRAA,Highest LRAA 14.7; individual range 6.0 to 14.7,6,,14.7,,14.7,LRAA_MCL,60,no,12,Combined-distribution value applies to all four treatment plants.
+OH1801212,2025,2025,Total Chlorine,ppm,four treatment plants,range,0.88 to 1.40,0.88,,1.4,,1.2,MRDL,4,no,12,Highest plant level found was 1.2 ppm.
+OH1801212,2025,2024,Lead,ppb,customer taps,90th_percentile,90th percentile 3.15; 1 of 52 samples above AL; outlier 1997.0,0,,1997,3.15,3.15,AL,15,no,18,Compliance uses the 90th percentile; the individual outlier is retained and not compared as the compliance statistic.
+OH1801212,2025,2024,Copper,ppm,customer taps,90th_percentile,90th percentile 0.06; 0 of 52 samples above AL,,,,0.06,0.06,AL,1.3,no,18,
+OH1801212,2025,2025,PFAS UCMR5,ppt,treatment plants,non_detect_summary,29 PFAS types and lithium; 646 tests; none detected,0,,0,,0,unregulated,,no,14,Summary spans 2024 and 2025 UCMR5 monitoring and does not provide compound-level values.
+VA6059501,2025,2024,Nitrate as Nitrogen,ppm,Fairfax-operated plants,range,0.22 to 2.1,0.22,,2.1,,2.1,MCL,10,no,15,
+VA6059501,2025,2024,Total Trihalomethanes,ppb,Fairfax-operated distribution area,highest_LRAA,Highest LRAA 53.2; individual range 7.2 to 81.4,7.2,,81.4,,53.2,LRAA_MCL,80,no,17,Compliance uses highest LRAA rather than the individual maximum.
+VA6059501,2025,2024,Haloacetic Acids HAA5,ppb,Fairfax-operated distribution area,highest_LRAA,Highest LRAA 32.8; individual range 0 to 62.7,0,,62.7,,32.8,LRAA_MCL,60,no,17,Compliance uses highest LRAA rather than the individual maximum.
+VA6059501,2025,2024,Total Chlorine,ppm,Fairfax-operated distribution area,highest_QRAA,Highest QRAA 2.9; individual range 0.5 to 4.1,0.5,,4.1,,2.9,MRDL,4,no,17,Compliance uses QRAA rather than the individual maximum.
+VA6059501,2025,2023,Lead,ppb,customer taps,90th_percentile,90th percentile 1.0; 0 sites above AL; individual range 0 to 4.6,0,,4.6,1,1,AL,15,no,17,Most recent reduced-monitoring result reported in the 2025 CCR.
+VA6059501,2025,2023,Copper,ppm,customer taps,90th_percentile,90th percentile 0.098; 0 sites above AL; individual range 0.007 to 0.202,0.007,,0.202,0.098,0.098,AL,1.3,no,17,Most recent reduced-monitoring result reported in the 2025 CCR.
+VA6059501,2025,2024,Arsenic,ppb,Washington Aqueduct service area,range,0.4 to 0.4,0.4,,0.4,,0.4,MCL,10,no,19,
+VA6059501,2025,2024,Nitrate as Nitrogen,ppm,Washington Aqueduct service area,range,0.3 to 2.0,0.3,,2,,2,MCL,10,no,19,
+VA6059501,2025,2024,Total Trihalomethanes,ppb,Washington Aqueduct distribution area,highest_LRAA,Highest LRAA 53.2; individual range 7.2 to 81.4,7.2,,81.4,,53.2,LRAA_MCL,80,no,21,Compliance uses highest LRAA rather than the individual maximum.
+VA6059501,2025,2024,Haloacetic Acids HAA5,ppb,Washington Aqueduct distribution area,highest_LRAA,Highest LRAA 32.8; individual range 0 to 62.7,0,,62.7,,32.8,LRAA_MCL,60,no,21,Compliance uses highest LRAA rather than the individual maximum.
+VA6059501,2025,2024,Total Chlorine,ppm,Washington Aqueduct distribution area,highest_QRAA,Highest QRAA 2.9; individual range 0.5 to 4.1,0.5,,4.1,,2.9,MRDL,4,no,21,Compliance uses QRAA rather than the individual maximum.
