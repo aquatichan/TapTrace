@@ -1,7 +1,14 @@
 # TapTrace data setup
 
-The source repository excludes downloaded and generated datasets. Build them from
-official sources before running the complete backend.
+Install all runtime datasets with:
+
+```bash
+python setup_runtime_data.py
+```
+
+The installer downloads the versioned national runtime archive from the repository's
+GitHub Release, verifies SHA-256 before extraction, checks every SQLite database,
+and downloads Houston/DC property inventories directly from official utility APIs.
 
 ## Required production assets
 
@@ -18,7 +25,7 @@ The builders and downloaders record source metadata and validation results under
 `outputs/`. Use a current quarterly source and update filenames/constants together;
 do not silently relabel an older snapshot as current.
 
-## Typical rebuild order
+## Rebuilding instead of installing the release
 
 ```bash
 pip install -r work/backend/requirements.txt
@@ -36,4 +43,3 @@ retrieval date, checksum, reporting period, and validation output with every rel
 Do not commit full addresses, benchmark samples, API caches, user submissions, or
 secrets. Generated registries should be distributed as versioned release artifacts
 or rebuilt during a controlled data-release process.
-

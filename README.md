@@ -35,10 +35,16 @@ available.
 
 ## Data assets
 
-Downloaded government datasets and generated SQLite registries are intentionally
-not stored in Git. The working research directory is several gigabytes and includes
-files above GitHub's 100 MB limit. See [DATA_SETUP.md](DATA_SETUP.md) for authoritative
-sources, expected local paths, and rebuild commands.
+Large generated national registries are distributed as a checksum-verified GitHub
+Release asset because normal Git rejects files above 100 MB. Property-linked Houston
+and DC inventories are fetched directly from the utilities' official public endpoints
+instead of being republished by TapTrace. Install everything with one command:
+
+```bash
+python setup_runtime_data.py
+```
+
+See [DATA_SETUP.md](DATA_SETUP.md) for provenance and rebuild details.
 
 This separation keeps the public repository reviewable and prevents stale generated
 data from being mistaken for source code. Production releases should version the
@@ -46,12 +52,13 @@ resulting registries separately and record their checksums.
 
 ## Local API
 
-After preparing the data assets and installing dependencies:
+On a fresh computer:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r work/backend/requirements.txt
+python setup_runtime_data.py
 python work/backend/api.py --port 8080
 ```
 
@@ -63,9 +70,10 @@ GET http://127.0.0.1:8080/water-profile?address=1344%20Woodcrest%20Dr%2C%20Houst
 
 ## Tests
 
-Core tests are executable after the data setup:
+Generate current live integration fixtures, then run the core tests:
 
 ```bash
+python work/national_profile/validate_national_resolver.py
 python work/backend/test_profile_engine.py
 python work/backend/test_backend_branches.py
 python work/backend/test_national_profile_v2.py
@@ -95,4 +103,3 @@ instructions from the water provider and public-health authorities.
 ## License
 
 MIT. Government and utility source data retain their original terms and attribution.
-

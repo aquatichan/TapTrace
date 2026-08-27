@@ -1,4 +1,4 @@
-"""Download DC Water's public premise material inventory for model-label fallback."""
+"""Download DC Water's public premise material inventory for the runtime connector."""
 
 from __future__ import annotations
 
