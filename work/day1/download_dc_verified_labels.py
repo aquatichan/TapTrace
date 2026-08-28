@@ -82,8 +82,9 @@ def main() -> None:
             raise RuntimeError(payload["error"])
         return payload.get("features", [])
     output = OUT_DIR / "dc_water_inventory_raw.csv"
+    partial = output.with_suffix(output.suffix + ".part")
     written = 0
-    with output.open("w", newline="", encoding="utf-8") as handle:
+    with partial.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=FIELDS)
         writer.writeheader()
         with ThreadPoolExecutor(max_workers=WORKERS) as pool:
@@ -100,9 +101,12 @@ def main() -> None:
         "rows_written": written,
         "fields": FIELDS,
     }
-    (OUT_DIR / "download_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     if written != count:
         raise RuntimeError(f"row mismatch: wrote {written}, expected {count}")
+    partial.replace(output)
+    manifest_partial = OUT_DIR / "download_manifest.json.part"
+    manifest_partial.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    manifest_partial.replace(OUT_DIR / "download_manifest.json")
     print(output)
 
 

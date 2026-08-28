@@ -85,8 +85,9 @@ def main() -> None:
             raise RuntimeError(payload["error"])
         return payload.get("features", [])
     output_path = OUT_DIR / "houston_lcrr_inventory_raw.csv"
+    partial_path = output_path.with_suffix(output_path.suffix + ".part")
     rows_written = 0
-    with output_path.open("w", newline="", encoding="utf-8") as handle:
+    with partial_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=FIELDS)
         writer.writeheader()
         with ThreadPoolExecutor(max_workers=WORKERS) as pool:
@@ -104,11 +105,12 @@ def main() -> None:
         "fields": FIELDS,
         "excluded_personal_fields": True,
     }
-    (OUT_DIR / "download_manifest.json").write_text(
-        json.dumps(manifest, indent=2), encoding="utf-8"
-    )
     if rows_written != expected:
         raise RuntimeError(f"row mismatch: wrote {rows_written}, expected {expected}")
+    partial_path.replace(output_path)
+    manifest_partial = OUT_DIR / "download_manifest.json.part"
+    manifest_partial.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    manifest_partial.replace(OUT_DIR / "download_manifest.json")
     print(output_path)
 
 

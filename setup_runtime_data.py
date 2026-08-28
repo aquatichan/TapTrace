@@ -30,6 +30,19 @@ PROPERTY = [
 ]
 
 
+def property_ready(path: Path) -> bool:
+    manifest_path = path.parent / "download_manifest.json"
+    if not path.is_file() or not manifest_path.is_file():
+        return False
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        expected = int(manifest["expected_rows"])
+        written = int(manifest["rows_written"])
+    except (OSError, ValueError, KeyError, TypeError, json.JSONDecodeError):
+        return False
+    return expected > 0 and written == expected and path.stat().st_size > 0
+
+
 def download(url: str, destination: Path) -> str:
     digest = hashlib.sha256()
     request = urllib.request.Request(url, headers={"User-Agent": "TapTrace-Data-Installer/1.0"})
@@ -50,7 +63,8 @@ def safe_extract(archive: Path) -> None:
 
 
 def validate() -> dict:
-    missing = [str(path.relative_to(ROOT)) for path in CORE + PROPERTY if not path.exists()]
+    missing = [str(path.relative_to(ROOT)) for path in CORE if not path.exists()]
+    missing.extend(str(path.relative_to(ROOT)) for path in PROPERTY if not property_ready(path))
     if missing:
         raise RuntimeError("Missing runtime assets: " + ", ".join(missing))
     integrity = {}
@@ -85,7 +99,7 @@ def main() -> None:
         (PROPERTY[1], ROOT / "work/day1/download_dc_verified_labels.py"),
     ]
     for destination, script in downloads:
-        if args.force or not destination.exists():
+        if args.force or not property_ready(destination):
             subprocess.run([sys.executable, str(script)], cwd=ROOT, check=True)
     print(json.dumps(validate(), indent=2))
 
