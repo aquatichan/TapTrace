@@ -260,10 +260,15 @@ def _echo_cache_get(pwsid: str, allow_stale: bool = False) -> dict | None:
         if row:
             result = json.loads(row[1]); result["cache_status"] = "local_registry"
             return result
-    ECHO_CACHE_DB.parent.mkdir(parents=True, exist_ok=True)
-    with sqlite3.connect(ECHO_CACHE_DB, timeout=30) as connection:
-        connection.execute("CREATE TABLE IF NOT EXISTS systems (pwsid TEXT PRIMARY KEY,fetched_at INTEGER NOT NULL,payload TEXT NOT NULL)")
-        row = connection.execute("SELECT fetched_at,payload FROM systems WHERE pwsid=?", (pwsid,)).fetchone()
+    try:
+        ECHO_CACHE_DB.parent.mkdir(parents=True, exist_ok=True)
+        with sqlite3.connect(ECHO_CACHE_DB, timeout=30) as connection:
+            connection.execute("CREATE TABLE IF NOT EXISTS systems (pwsid TEXT PRIMARY KEY,fetched_at INTEGER NOT NULL,payload TEXT NOT NULL)")
+            row = connection.execute("SELECT fetched_at,payload FROM systems WHERE pwsid=?", (pwsid,)).fetchone()
+    except sqlite3.OperationalError:
+        # The cache is an optimization. Read-only/ephemeral cloud filesystems
+        # must never prevent an otherwise valid public-water profile.
+        return None
     if not row:
         return None
     result = json.loads(row[1])
@@ -276,10 +281,14 @@ def _echo_cache_get(pwsid: str, allow_stale: bool = False) -> dict | None:
 
 def _echo_cache_put(pwsid: str, result: dict) -> None:
     stored = dict(result); stored["cache_status"] = "stored"
-    with sqlite3.connect(ECHO_CACHE_DB, timeout=30) as connection:
-        connection.execute("CREATE TABLE IF NOT EXISTS systems (pwsid TEXT PRIMARY KEY,fetched_at INTEGER NOT NULL,payload TEXT NOT NULL)")
-        connection.execute("INSERT OR REPLACE INTO systems VALUES (?,?,?)", (pwsid, int(time.time()), json.dumps(stored)))
-        connection.commit()
+    try:
+        ECHO_CACHE_DB.parent.mkdir(parents=True, exist_ok=True)
+        with sqlite3.connect(ECHO_CACHE_DB, timeout=30) as connection:
+            connection.execute("CREATE TABLE IF NOT EXISTS systems (pwsid TEXT PRIMARY KEY,fetched_at INTEGER NOT NULL,payload TEXT NOT NULL)")
+            connection.execute("INSERT OR REPLACE INTO systems VALUES (?,?,?)", (pwsid, int(time.time()), json.dumps(stored)))
+            connection.commit()
+    except sqlite3.OperationalError:
+        return
 
 
 def echo_system(pwsid: str) -> dict | None:
