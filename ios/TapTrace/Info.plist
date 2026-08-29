@@ -13,7 +13,7 @@
   <key>LSRequiresIPhoneOS</key><true/>
   <key>UILaunchScreen</key><dict/>
   <key>UISupportedInterfaceOrientations</key><array><string>UIInterfaceOrientationPortrait</string></array>
-  <key>TapTraceAPIBaseURL</key><string>https://cycle-chug-nervy.ngrok-free.dev</string>
+  <key>TapTraceAPIBaseURL</key><string>https://taptrace-api.onrender.com</string>
   <key>NSAppTransportSecurity</key><dict><key>NSAllowsLocalNetworking</key><true/></dict>
 </dict>
 </plist>
