@@ -56,6 +56,11 @@ BOUNDARY_FIELDS = (
 )
 
 
+def connect_registry(path: Path) -> sqlite3.Connection:
+    """Open packaged reference data without journal or recovery writes."""
+    return sqlite3.connect(f"file:{path}?mode=ro&immutable=1", uri=True)
+
+
 def tls_context() -> ssl.SSLContext:
     try:
         import certifi
@@ -197,7 +202,7 @@ def geographic_system_candidates(match: dict, limit: int = 8) -> list[dict]:
     zip_code = (match.get("zip_code") or "").split("-", 1)[0]
     if not state or (not city and not zip_code):
         return []
-    with sqlite3.connect(SDWIS_REGISTRY_DB) as connection:
+    with connect_registry(SDWIS_REGISTRY_DB) as connection:
         connection.row_factory = sqlite3.Row
         rows = connection.execute("""
             SELECT g.pwsid,g.area_type,g.zip_code,g.city,s.payload
@@ -255,7 +260,7 @@ def private_well_context(longitude: float, latitude: float) -> dict | None:
 
 def _echo_cache_get(pwsid: str, allow_stale: bool = False) -> dict | None:
     if SDWIS_REGISTRY_DB.exists():
-        with sqlite3.connect(SDWIS_REGISTRY_DB, timeout=30) as registry:
+        with connect_registry(SDWIS_REGISTRY_DB) as registry:
             row = registry.execute("SELECT fetched_at,payload FROM systems WHERE pwsid=?", (pwsid,)).fetchone()
         if row:
             result = json.loads(row[1]); result["cache_status"] = "local_registry"
@@ -349,7 +354,7 @@ def ucmr5_system(pwsid: str) -> dict:
             "has_ucmr5_results": None,
             "reason": "The local EPA UCMR 5 registry has not been built.",
         }
-    connection = sqlite3.connect(UCMR5_DB)
+    connection = connect_registry(UCMR5_DB)
     connection.row_factory = sqlite3.Row
     rows = [dict(row) for row in connection.execute(
         "SELECT * FROM pws_contaminant_summary WHERE pwsid=? ORDER BY contaminant", (pwsid,)
@@ -376,7 +381,7 @@ def ucmr5_system(pwsid: str) -> dict:
 def ccr_system(pwsid: str) -> dict:
     if not CCR_DB.exists():
         return {"registry_available": False, "has_validated_ccr": None, "measurements": []}
-    connection = sqlite3.connect(CCR_DB)
+    connection = connect_registry(CCR_DB)
     connection.row_factory = sqlite3.Row
     report_row = connection.execute(
         "SELECT * FROM reports WHERE pwsid=? AND validation_status='validated' ORDER BY report_year DESC LIMIT 1",
