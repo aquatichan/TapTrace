@@ -7,7 +7,9 @@ import hashlib
 import calendar
 import os
 import secrets
+import sys
 import time
+import traceback
 import uuid
 from pathlib import Path
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -213,6 +215,11 @@ class Handler(BaseHTTPRequestHandler):
         except TimeoutError:
             self._send(504, {"error": "upstream_timeout", "request_id": self.request_id})
         except Exception:
+            print(
+                f"[{self.request_id}] water-profile resolution failed:\n{traceback.format_exc()}",
+                file=sys.stderr,
+                flush=True,
+            )
             self._send(502, {"error": "upstream_resolution_failed", "request_id": self.request_id})
 
     def log_message(self, format: str, *args) -> None:
