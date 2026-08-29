@@ -18,4 +18,14 @@ outputs/pilot_selection
 outputs/TapTrace_Project_Blueprint.docx
 outputs/backend/nationwide_benchmark*
 outputs/backend/residential_benchmark*
-
+work/data/raw/ccr_2025
+work/data/raw/houston_lcrr_inventory
+work/data/raw/dc_water_inventory
+work/data/raw/national_city_audit
+work/data/raw/ucmr5
+outputs/backend/*.sqlite
+outputs/national_contaminants
+outputs/national_ccr
+outputs/national_ccr_coverage
+ios
+mobile

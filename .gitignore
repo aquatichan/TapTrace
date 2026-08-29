@@ -12,6 +12,8 @@ __pycache__/
 *.py[cod]
 .DS_Store
 .pytest_cache/
+**/xcuserdata/
+*.xcuserstate
 
 # Downloaded source data and generated artifacts
 work/data/raw/

@@ -6,6 +6,7 @@ import hashlib
 import csv
 import json
 import os
+import re
 import sqlite3
 import subprocess
 import sys
@@ -409,6 +410,12 @@ def compose_profile(address: str, selected_pwsid: str | None = None, enhanced: b
     address = " ".join(address.split())
     if len(address) < 8 or len(address) > 300:
         raise ValueError("address must be between 8 and 300 characters")
+    complete_address = (
+        re.search(r",\s*[^,]+,\s*[A-Z]{2}(?:\s+\d{5}(?:-\d{4})?)?$", address, re.IGNORECASE)
+        or re.search(r"\b[A-Z]{2}\s+\d{5}(?:-\d{4})?$", address, re.IGNORECASE)
+    )
+    if not complete_address:
+        raise ValueError("enter a complete U.S. address including city, state, and ZIP code")
     if selected_pwsid is not None and not isinstance(selected_pwsid, str):
         raise ValueError("selected_pwsid must be a string")
     selected_pwsid = selected_pwsid.strip().upper() if selected_pwsid else None

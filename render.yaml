@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: taptrace-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./work/backend/Dockerfile.render
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: TAPTRACE_STATE_DIR
+        value: /tmp/taptrace-state
+      - key: TAPTRACE_REQUIRE_RECENT_BACKUP
+        value: "false"

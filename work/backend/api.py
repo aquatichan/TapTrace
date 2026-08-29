@@ -223,7 +223,7 @@ def main() -> None:
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", default=8080, type=int)
+    parser.add_argument("--port", default=int(os.getenv("PORT", "8080")), type=int)
     args = parser.parse_args()
     initialize_state()
     print(f"TapTrace API listening on http://{args.host}:{args.port}", flush=True)

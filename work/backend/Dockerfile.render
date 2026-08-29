@@ -1,0 +1,31 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    TAPTRACE_STATE_DIR=/tmp/taptrace-state
+
+WORKDIR /app
+
+COPY work/backend/requirements.txt /tmp/taptrace-requirements.txt
+RUN pip install --no-cache-dir -r /tmp/taptrace-requirements.txt
+
+# Copy executable sources only. Runtime registries come from the verified data
+# release, so research archives never enter the production image.
+COPY setup_runtime_data.py DATA_SETUP.md /app/
+COPY work/backend /app/work/backend
+COPY work/national_profile /app/work/national_profile
+COPY work/houston_profile /app/work/houston_profile
+COPY work/day1/*.py /app/work/day1/
+
+RUN python setup_runtime_data.py \
+    && mkdir -p /tmp/taptrace-state /app/outputs/national_profile/enhanced /app/outputs/houston_profile/address_profiles \
+    && useradd --create-home --uid 10001 taptrace \
+    && chown -R taptrace:taptrace /tmp/taptrace-state /app/outputs/national_profile /app/outputs/houston_profile
+
+USER taptrace
+EXPOSE 8080
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=90s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=3)"
+
+CMD ["python", "work/backend/api.py", "--host", "0.0.0.0"]
