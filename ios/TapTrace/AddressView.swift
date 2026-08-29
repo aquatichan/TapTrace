@@ -1,9 +1,11 @@
 import SwiftUI
 @preconcurrency import MapKit
 
+@MainActor
 final class AddressSearchModel: NSObject, ObservableObject, MKLocalSearchCompleterDelegate {
     @Published private(set) var suggestions: [MKLocalSearchCompletion] = []
     private let completer = MKLocalSearchCompleter()
+    private var queryTask: Task<Void, Never>?
 
     override init() {
         super.init()
@@ -12,18 +14,39 @@ final class AddressSearchModel: NSObject, ObservableObject, MKLocalSearchComplet
     }
 
     func update(_ query: String) {
+        queryTask?.cancel()
         let value = query.trimmingCharacters(in: .whitespacesAndNewlines)
-        if value.count < 4 { suggestions = [] } else { completer.queryFragment = value }
+        guard value.count >= 4 else { suggestions = []; return }
+        queryTask = Task { [weak self] in
+            try? await Task.sleep(for: .milliseconds(250))
+            guard !Task.isCancelled else { return }
+            self?.completer.queryFragment = value
+        }
     }
 
-    func clear() { suggestions = [] }
+    func clear() { queryTask?.cancel(); suggestions = [] }
+
+    func resolvedAddress(for completion: MKLocalSearchCompletion) async -> String? {
+        let request = MKLocalSearch.Request(completion: completion)
+        request.resultTypes = [.address]
+        guard let item = try? await MKLocalSearch(request: request).start().mapItems.first else { return nil }
+        let place = item.placemark
+        let street = [place.subThoroughfare, place.thoroughfare]
+            .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }.joined(separator: " ")
+        let city = place.locality?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let state = place.administrativeArea?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let zip = place.postalCode?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        guard !street.isEmpty, !city.isEmpty, state.count == 2, zip.count >= 5 else { return nil }
+        return "\(street), \(city), \(state) \(zip)"
+    }
 
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        DispatchQueue.main.async { self.suggestions = Array(completer.results.prefix(5)) }
+        suggestions = Array(completer.results.prefix(4))
     }
 
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        DispatchQueue.main.async { self.suggestions = [] }
+        suggestions = []
     }
 }
 
@@ -34,6 +57,8 @@ struct AddressView: View {
     @State private var validationMessage: String?
     @State private var model = ProfileViewModel()
     @State private var selectedSuggestion = false
+    @State private var canonicalAddress: String?
+    @State private var resolvingSuggestion = false
     @StateObject private var search = AddressSearchModel()
     @FocusState private var addressFocused: Bool
 
@@ -92,7 +117,10 @@ struct AddressView: View {
                     .textContentType(.fullStreetAddress).textInputAutocapitalization(.words).submitLabel(.go)
                     .focused($addressFocused).onSubmit(startProfile)
                     .onChange(of: address) { _, value in
-                        if selectedSuggestion { selectedSuggestion = false } else { search.update(value) }
+                        if selectedSuggestion { selectedSuggestion = false } else {
+                            canonicalAddress = nil
+                            search.update(value)
+                        }
                         validationMessage = nil
                     }
             }
@@ -107,6 +135,16 @@ struct AddressView: View {
                             selectedSuggestion = true
                             address = [item.title, item.subtitle].filter { !$0.isEmpty }.joined(separator: ", ")
                             search.clear(); addressFocused = false
+                            resolvingSuggestion = true
+                            Task {
+                                let resolved = await search.resolvedAddress(for: item)
+                                if let resolved {
+                                    selectedSuggestion = true
+                                    address = resolved
+                                    canonicalAddress = resolved
+                                }
+                                resolvingSuggestion = false
+                            }
                         } label: {
                             HStack(alignment: .top, spacing: 11) {
                                 Image(systemName: "mappin").foregroundStyle(Color("BrandBlue")).padding(.top, 2)
@@ -131,6 +169,8 @@ struct AddressView: View {
             if let validationMessage { Text(validationMessage).font(.caption).foregroundStyle(.red).padding(.top, 7) }
             Button(action: startProfile) { Label("Start my profile", systemImage: "magnifyingglass") }
                 .buttonStyle(PrimaryButtonStyle()).padding(.top, 14)
+                .disabled(resolvingSuggestion)
+                .opacity(resolvingSuggestion ? 0.72 : 1)
             Label("Results combine official provider records, federal monitoring, and available infrastructure data.", systemImage: "checkmark.shield")
                 .font(.caption).foregroundStyle(TapTraceTheme.muted)
                 .fixedSize(horizontal: false, vertical: true).padding(.top, 18)
@@ -161,7 +201,11 @@ struct AddressView: View {
     }
 
     private func startProfile() {
-        let trimmed = address.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !resolvingSuggestion else {
+            validationMessage = "Finishing your address…"
+            return
+        }
+        let trimmed = (canonicalAddress ?? address).trimmingCharacters(in: .whitespacesAndNewlines)
         guard isCompleteAddress(trimmed) else {
             validationMessage = "Choose a complete address including city, state, and ZIP code."
             addressFocused = true; search.update(trimmed); return
