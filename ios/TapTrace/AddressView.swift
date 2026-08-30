@@ -1,5 +1,6 @@
 import SwiftUI
 @preconcurrency import MapKit
+import CoreLocation
 
 @MainActor
 final class AddressSearchModel: NSObject, ObservableObject, MKLocalSearchCompleterDelegate {
@@ -30,7 +31,11 @@ final class AddressSearchModel: NSObject, ObservableObject, MKLocalSearchComplet
         let request = MKLocalSearch.Request(completion: completion)
         request.resultTypes = [.address]
         guard let item = try? await MKLocalSearch(request: request).start().mapItems.first else { return nil }
-        let place = item.placemark
+        var place = item.placemark
+        if place.postalCode?.isEmpty != false, let location = place.location,
+           let reverse = try? await CLGeocoder().reverseGeocodeLocation(location).first {
+            place = MKPlacemark(placemark: reverse)
+        }
         let street = [place.subThoroughfare, place.thoroughfare]
             .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }.joined(separator: " ")

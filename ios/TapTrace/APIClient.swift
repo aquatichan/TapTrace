@@ -67,7 +67,7 @@ final class ProfileViewModel {
             let client = try APIClient()
             do {
                 state = .loaded(try await client.profile(for: address))
-            } catch let error as URLError where [.timedOut, .networkConnectionLost, .cannotConnectToHost].contains(error.code) {
+            } catch let error as URLError where [.timedOut, .networkConnectionLost, .cannotConnectToHost, .secureConnectionFailed].contains(error.code) {
                 loadingStage = 4
                 try await Task.sleep(for: .seconds(3))
                 state = .loaded(try await client.profile(for: address))
