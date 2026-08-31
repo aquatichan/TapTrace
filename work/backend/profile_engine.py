@@ -31,7 +31,10 @@ _SERVICE_LINE_INDEX: dict[str, dict] | None = None
 
 def _cache_key(address: str, selected_pwsid: str | None, enhanced: bool) -> str:
     normalized = " ".join(address.upper().split())
-    material = json.dumps([normalized, selected_pwsid, enhanced, "profile-v3-no-household-ml"], separators=(",", ":"))
+    material = json.dumps(
+        [normalized, selected_pwsid, enhanced, "profile-v3.1-nearby-infrastructure-context"],
+        separators=(",", ":"),
+    )
     return hashlib.sha256(material.encode()).hexdigest()
 
 
