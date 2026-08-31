@@ -33,6 +33,32 @@ def main() -> None:
     assert "household_probability" not in result["infrastructure"]["assessment"]
     passed.append("single_system_enhanced_unknown_pipe")
 
+    nearby = copy.deepcopy(BASE)
+    nearby["enhanced_connector"] = {
+        "connector": "houston",
+        "resolution": "official_address_found_no_inventory_connection",
+        "generated_property_profile": None,
+        "area_context": {
+            "status": "nearby_official_records_available",
+            "evidence_scope": "nearby_service_connections_not_property_match",
+            "radius_feet": 250.0,
+            "records_in_radius": 14,
+            "records_summarized": 14,
+            "nearest_record_distance_feet": 110.7,
+            "utility_side_material_counts": {"Non-Lead": 14},
+            "customer_side_material_counts": {"Non-Lead": 14},
+            "both_sides_material_counts": {"Non-Lead": 14},
+            "pwsids": ["CITY OF HOUSTON"],
+            "explanation": "Nearby records are area context, not this property's pipe material.",
+        },
+    }
+    result = profile(nearby)
+    assert result["infrastructure"]["classification_status"] == "area_context_only"
+    assert result["infrastructure"]["assessment"]["nearby_records"]["records_in_radius"] == 14
+    assert result["infrastructure"]["official_status"] is None
+    assert "property" in result["infrastructure"]["assessment"]["explanation"].lower()
+    passed.append("nearby_official_pipe_records_never_become_property_label")
+
     no_ccr = copy.deepcopy(BASE)
     no_ccr["consumer_confidence_report_profile"] = {
         "registry_available": True, "has_validated_ccr": False, "measurements": [],

@@ -10,7 +10,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
+import ssl
 import subprocess
 import sys
 import urllib.parse
@@ -18,6 +20,15 @@ import urllib.request
 from pathlib import Path
 
 import pandas as pd
+
+
+def tls_context() -> ssl.SSLContext:
+    """Use certifi's maintained CA bundle when the host Python lacks system roots."""
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        return ssl.create_default_context()
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -72,7 +83,7 @@ def arcgis_query(where: str) -> list[dict]:
         ADDRESS_QUERY + "?" + urllib.parse.urlencode(params),
         headers={"User-Agent": "TapTrace-Houston-Address-Resolver/1.0"},
     )
-    with urllib.request.urlopen(request, timeout=60) as response:
+    with urllib.request.urlopen(request, timeout=60, context=tls_context()) as response:
         payload = json.load(response)
     if "error" in payload:
         raise RuntimeError(payload["error"])
@@ -116,6 +127,45 @@ def logical_services(inventory: pd.DataFrame, addrkey: int) -> list[dict]:
             "both_sides": str(representative["Both_Sides_Category"]),
         })
     return services
+
+
+def nearby_inventory_context(inventory: pd.DataFrame, latitude: float, longitude: float,
+                             radius_feet: float = 250.0) -> dict | None:
+    """Summarize nearby official records without relabeling them as this property."""
+    if pd.isna(latitude) or pd.isna(longitude):
+        return None
+    lat_scale = 69.0
+    lon_scale = 69.0 * math.cos(math.radians(float(latitude)))
+    distances_miles = (
+        ((inventory["LATITUDE"] - float(latitude)) * lat_scale) ** 2
+        + ((inventory["LONGITUDE"] - float(longitude)) * lon_scale) ** 2
+    ) ** 0.5
+    nearby = inventory.loc[distances_miles * 5280 <= radius_feet].copy()
+    if nearby.empty:
+        return None
+    nearby["distance_feet"] = (distances_miles.loc[nearby.index] * 5280).round(1)
+    nearest = nearby.sort_values(["distance_feet", "OBJECTID"]).head(25)
+
+    def counts(column: str) -> dict[str, int]:
+        values = nearest[column].fillna("Not reported").astype(str)
+        return {str(key): int(value) for key, value in values.value_counts().sort_index().items()}
+
+    return {
+        "status": "nearby_official_records_available",
+        "evidence_scope": "nearby_service_connections_not_property_match",
+        "radius_feet": radius_feet,
+        "records_in_radius": int(len(nearby)),
+        "records_summarized": int(len(nearest)),
+        "nearest_record_distance_feet": float(nearest.iloc[0]["distance_feet"]),
+        "utility_side_material_counts": counts("Utility_Side_Category"),
+        "customer_side_material_counts": counts("Customer_Side_Category"),
+        "both_sides_material_counts": counts("Both_Sides_Category"),
+        "pwsids": sorted(nearest["PWSID"].dropna().astype(str).unique().tolist()),
+        "explanation": (
+            "These are official inventory records near the address. They describe the surrounding "
+            "service connections and must not be presented as this property's pipe material."
+        ),
+    }
 
 
 def main() -> None:
@@ -180,6 +230,11 @@ def main() -> None:
             stdout=subprocess.DEVNULL,
         )
 
+    area_context = None
+    if resolution == "official_address_found_no_inventory_connection" and len(candidates) == 1:
+        point = candidates[0]
+        area_context = nearby_inventory_context(inventory, point["latitude"], point["longitude"])
+
     result = {
         "input_address": args.address,
         "normalized_street_address": normalized,
@@ -191,6 +246,7 @@ def main() -> None:
         "candidates": candidates,
         "selected_service": selected,
         "generated_profile": None if profile_path is None else str(profile_path.relative_to(ROOT)),
+        "area_context": area_context,
         "safety_policy": (
             "A profile is generated automatically only for one exact official address with one logical "
             "service. Multiple addresses or genuinely different services require user confirmation."

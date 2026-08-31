@@ -311,6 +311,30 @@ def _infrastructure(resolved: dict) -> dict:
                 "meaning": "Strength of evidence supporting the infrastructure assessment—not the chance that this home has a particular pipe material.",
             },
         }
+    area_context = enhanced.get("area_context")
+    if area_context:
+        return {
+            "availability": "nearby_official_records_available",
+            "official_status": None,
+            "display_status": "Nearby infrastructure context available",
+            "classification_status": "area_context_only",
+            "evidence_level": "nearby_official_inventory_records",
+            "assessment": {
+                "concern_level": _concern_level(system_record),
+                "basis": "nearby_official_service_connections_plus_water_system_inventory",
+                "system_context": system_record,
+                "nearby_records": area_context,
+                "explanation": area_context.get("explanation"),
+            },
+            "confidence": {
+                "score": 45,
+                "label": "Area context",
+                "meaning": (
+                    "Confidence that the nearby records describe surrounding infrastructure; "
+                    "they do not identify the service line connected to this property."
+                ),
+            },
+        }
     return {
         "availability": "system_assessment_available" if system_record else "property_details_not_available",
         "official_status": None,

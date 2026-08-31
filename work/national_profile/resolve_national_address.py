@@ -515,6 +515,7 @@ def main() -> None:
             "resolution": enhanced_result["resolution"],
             "result_path": str(enhanced_out.relative_to(ROOT)),
             "generated_property_profile": enhanced_result.get("generated_profile"),
+            "area_context": enhanced_result.get("area_context"),
         }
     elif selected and selected["pwsid"] == DC_PWSID and not args.skip_enhanced:
         property_record = dc_property_record(args.address)
